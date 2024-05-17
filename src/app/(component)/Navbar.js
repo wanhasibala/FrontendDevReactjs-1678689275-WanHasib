@@ -10,11 +10,11 @@ import {
 import { ChevronDown } from "lucide-react";
 import React from "react";
 
-const Navbar = () => {
+const Navbar = ({ minRating, handleRatingChange }) => {
   return (
     <div className=" flex flex-col mt-4">
       <div className="max-w-xl px-8 flex flex-col gap-4 ">
-        <h1 className="text-4xl">Restaurant</h1>
+        <div className="text-4xl">Restaurant</div>
         <p>
           Officia ex sint excepteur quis dolor tempor ad do quis nostrud nostrud
           culpa laborum deserunt. Est pariatur occaecat nulla dolore excepteur.
@@ -32,11 +32,14 @@ const Navbar = () => {
             </DropdownMenuTrigger>
             <DropdownMenuContent>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>Profile</DropdownMenuItem>
-              <DropdownMenuItem>Billing</DropdownMenuItem>
-              <DropdownMenuItem>Team</DropdownMenuItem>
-              <DropdownMenuItem>Subscription</DropdownMenuItem>
+              <DropdownMenuItem onClick={() =>handleRatingChange(0)}>All</DropdownMenuItem>
+              <DropdownMenuItem onClick={() =>handleRatingChange(1)}>1</DropdownMenuItem>
+              <DropdownMenuItem onClick={() =>handleRatingChange(2)}>2</DropdownMenuItem>
+              <DropdownMenuItem onClick={() =>handleRatingChange(3)}>3</DropdownMenuItem>
+              <DropdownMenuItem onClick={() =>handleRatingChange(4)}>4</DropdownMenuItem>
+              <DropdownMenuItem onClick={() =>handleRatingChange(5)}>5</DropdownMenuItem>
             </DropdownMenuContent>
+
             <DropdownMenu>
               <DropdownMenuTrigger className="flex border-b border-gray-300 gap-8 py-2 items-center">
                 Categories <ChevronDown size={16} />
@@ -51,7 +54,7 @@ const Navbar = () => {
             </DropdownMenu>
           </DropdownMenu>
         </div>
-          <Button variant="outline">Clear all</Button>
+        <Button variant="outline">Clear all</Button>
       </nav>
     </div>
   );
